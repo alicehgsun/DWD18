@@ -2,15 +2,15 @@ var express = require('express');
 var app = express();
 var path = require("path");
 
-var bodyParser = require('body-parser');
-var urlencodedParser = bodyParser.urlencoded({ extended: true }); // for parsing form data
-app.use(urlencodedParser);
+// var bodyParser = require('body-parser');
+// var urlencodedParser = bodyParser.urlencoded({ extended: true }); // for parsing form data
+// app.use(urlencodedParser);
 
 var answers1 = [];
 var answers2 = [];
 var answers3 = [];
 
-// app.use(express.static('/index.html'));
+app.use(express.static('/toilet'));
 
 // app.get('/', function (req, res) {
 //   res.sendFile(path.join(__dirname +'/index.html'));
