@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>PricelessToilet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript">
+    function setup() {
+      var datafromserver = "<%=answerData%>";
+    }
+    window.addEventListener('load', setup);
+  </script>
+  <style type="text/css">
+    * {
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    html,
+    body {
+      padding: 0;
+      margin: 0;
+      color: #ebebeb;
+    }
+
+    body {
+      background-color: black;
+      background-image: url("Duchamp.jpg");
+      background-size: cover;
+    }
+
+    p {
+      margin: 0px;
+      font-size: 19px;
+      text-align: center;
+      top: 140px;
+      color: white;
+      z-index: 15;
+      padding: 12px;
+    }
+
+    .Top {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -webkit-align-items: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -webkit-justify-content: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+      font-size: 3rem;
+      position: relative;
+      z-index: 10;
+      height: 110px;
+      background-color:black;
+    }
+
+    .price{background-color:black;}
+
+    .between {
+      height: 20px;
+      background-color:black;
+    }
+
+    .Container {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      overflow: hidden;
+      height: 100vh;
+      margin-top: -100px;
+      padding-top: 100px;
+      position: relative;
+      width: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      will-change: overflow;
+
+    }
+
+    .Left,
+    .Middle,
+    .Right {
+      overflow: auto;
+      height: auto;
+      padding: .5rem;
+      -webkit-overflow-scrolling: touch;
+      -ms-overflow-style: none;
+    }
+
+    .Left::-webkit-scrollbar,
+    .Middle::-webkit-scrollbar,
+    .Right::-webkit-scrollbar {
+      display: none;
+    }
+
+    .Left {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      -ms-flex: 1;
+      background-image: linear-gradient(transparent, #d49fa8);
+    }
+
+    .Middle {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      background-image: linear-gradient(transparent, #cc8690);
+    }
+
+    .Right {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1;
+      -ms-flex: 1;
+      background-image: linear-gradient(transparent, #b5707a);
+    }
+
+    img {
+      box-shadow: 0 10px 6px -6px #000000;
+    }
+
+    .say {
+      text-align: left;
+      font-family: monospace;
+      margin-bottom: 100px;
+      margin-top: 100px;
+      margin-left: 20px;
+      font-size: 19px;
+    }
+
+    #credit {
+      color: white;
+      background-color: black;
+      margin-bottom: 100px;
+      text-align: left;
+      line-height: 130%;
+      font-size: 19px;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+
+    #credit1 {
+      color: white;
+      background-color: black;
+      margin-bottom: 100px;
+      text-align: left;
+      line-height: 130%;
+      font-size: 19px;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+
+    #credit2 {
+      color: white;
+      background-color: black;
+      margin-bottom: 100px;
+      text-align: left;
+      line-height: 130%;
+      font-size: 19px;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    .wow {
+      color: red;
+    }
+
+
+  </style>
+</head>
+
+<body>
+  <div class="between"></div>
+  <div class="Top">
+    <h1>Fountain</h1>
+  </div>
+  <div class="price">
+  <p>This porcelain urinal is a 1917 art work produced by Marcel Duchamp.</p>
+  <p>Its value has been estimated at
+    <span class="wow">$3,340,000</span>.</p>
+  </div>
+  <div class="between"></div>
+
+
+  <div class="Container">
+    <div class="Left">
+      <div style="text-align: center">
+        <img src="a1.jpg" width="400px" ; vspace="175">
+        <img src="a2.jpg" width="400px" ; vspace="175">
+        <img src="a3.jpg" width="400px" ; vspace="175">
+        <img src="a4.jpg" width="400px" ; vspace="175">
+        <img src="a5.jpg" width="400px" ; vspace="175">
+        <img src="a6.jpg" width="400px" ; vspace="175">
+        <img src="a7.jpg" width="400px" ; vspace="175">
+        <img src="a8.jpg" width="400px" ; vspace="175">
+        <div id="credit">These are the answers by the people who felt like the price is acceptable - from Providence Place Mall, during March 7, 2015 (2pm ~ 5pm). Do you agree?</div>
+
+
+        <form method="get" action="/processit1">
+          <input type="text" name="yes" value="Acceptable!" />
+          <button id="addOne">Acceptable</button>
+        </form>
+
+        <p class = "say">
+          <% for (var i = 0; i < answerData.length; i++) { %>
+            <%= answerData[i].acceptData %>
+          </br>
+            <% } %>
+        </p>
+
+      </div>
+    </div>
+
+    <div class="Middle">
+      <div style="text-align: center">
+        <img src="m1.jpg" width="400px" ; vspace="175">
+        <img src="m2.jpg" width="400px" ; vspace="175">
+        <img src="m3.jpg" width="400px" ; vspace="175">
+        <img src="m4.jpg" width="400px" ; vspace="175">
+        <img src="m5.jpg" width="400px" ; vspace="175">
+        <img src="m6.jpg" width="400px" ; vspace="175">
+        <img src="m7.jpg" width="400px" ; vspace="175">
+        <img src="m8.jpg" width="400px" ; vspace="175">
+        <div id="credit1">Some people remained neutral about the price, and these are thier opinions - from Providence Place Mall, during March 7, 2015 (2pm ~ 5pm). Do you agree?</div>
+        <form method="get" action="/processit2">
+          <input type="text" name="meh" value="Meh...." />
+          <button id="addTwo">Meh....</button>
+        </form>
+
+        <p class = "say">
+          <% for (var i = 0; i < answerData.length; i++) { %>
+            <%= answerData[i].mehData %>
+          </br>
+            <% } %>
+        </p>
+
+      </div>
+    </div>
+
+    <div class="Right">
+      <div style="text-align: center">
+        <img src="u1.jpg" width="400px" ; vspace="175">
+        <img src="u2.jpg" width="400px" ; vspace="175">
+        <img src="u3.jpg" width="400px" ; vspace="175">
+        <img src="u4.jpg" width="400px" ; vspace="175">
+        <img src="u5.jpg" width="400px" ; vspace="175">
+        <img src="u6.jpg" width="400px" ; vspace="175">
+        <img src="u7.jpg" width="400px" ; vspace="175">
+        <img src="u8.jpg" width="400px" ; vspace="175">
+        <div id="credit2">Lastly, the answers by the people who thought the price is unreasonable - from Providence Place Mall, during March 7, 2015 (2pm ~ 5pm). Do you agree?</div>
+        <form method="get" action="/processit3">
+          <input type="text" name="no" value="Unacceptable!" />
+          <button id="addThree">Unacceptable</button>
+        </form>
+
+        <p class = "say">
+          <% for (var i = 0; i < answerData.length; i++) { %>
+            <%= answerData[i].unacceptData %>
+          </br>
+            <% } %>
+        </p>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+</body>
+
+</html>
