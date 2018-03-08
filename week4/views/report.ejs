@@ -1,0 +1,208 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>International Student Data</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js"></script>
+<style>
+        canvas {
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .button{
+          padding-top:20px;
+          padding-bottom:20px;
+        }
+
+        button {
+            padding:20px 50px 20px 50px;
+            color:#57068c;
+            font-size:30px;
+            background-color:transparent;
+            border:1px solid #57068c;
+            -webkit-transition-duration: 0.4s; /* Safari */
+            transition-duration: 0.4s;
+        }
+
+        button:hover {
+            background-color: #57068c;
+            color: white;
+        }
+
+        button:focus {
+          outline: none;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        @font-face { font-family: Gotham; font-weight:200; src: url('font/Gotham-Book.otf'); }
+        @font-face { font-family: Gotham; font-weight:100; src: url('font/Gotham-Light.otf'); }
+        @font-face { font-family: Gotham; font-weight: medium; src: url('font/Gotham-Medium.otf');}
+
+        h1 {
+            font-family: Gotham;
+            font-weight: medium;
+        }
+
+        h3 {
+            font-family: Gotham;
+            font-weight: 200;
+        }
+
+        h5 {
+            font-family: Gotham;
+            font-weight: 100;
+        }
+
+        body {
+            color: #222;
+        }
+    </style>
+</head>
+
+<body>
+    <div style="text-align: center">
+    <img src="img/NYUDataViz.png">
+    </div>
+    <div style="text-align: center;">
+    <h1>We're growing</h1>
+    <h3>See how NYU international student enrollment has grown since 2006.</h3>
+    </div>
+    <div style="width:70%;padding-left:15%">
+        <canvas id="lineChart"></canvas>
+    </div>
+    <br><br><br>
+    <hr>
+
+
+    <div style="text-align: center;">
+    <h1>Around the world</h1>
+    <h3>An interactive map with student and scholar data by country of origin.</h3>
+    <h5>Click on each country for more info. For a full version of this map, go <a href="http://www.nyu.edu/ogs/placeoforigin" target="_blank">here</a>.</h5>
+     <iframe width="780" height="400" scrolling="no" frameborder="no" src="https://www.google.com/fusiontables/embedviz?q=select+col16+from+1b-0L1Z9dg16_PctUNu1mralYjb_OswUzPbD-FCo&amp;viz=MAP&amp;h=false&amp;lat=31.11979350879503&amp;lng=12.887599421875166&amp;t=1&amp;z=3&amp;l=col16&amp;y=2&amp;tmplt=2&amp;hml=GEOCODABLE"></iframe>
+    </div>
+    <br><br><br>
+    <hr>
+    <br>
+
+
+    <div style="text-align: center;">
+        <h1>Academic Level</h1>
+        <h3>In 2016, NYU had 17,326 international students. Explore the population by academic level.</h3>
+    </div>
+    <div style="width:50%;padding-left:25%">
+        <canvas id="pieChart"></canvas>
+    </div>
+
+    <br><br><br>
+    <hr>
+    <br>
+
+
+    <div class="button" style="text-align: center;">
+        <a href="http://www.nyu.edu/content/dam/nyu/globalServices/documents/annualreport/annualReport2016-17.pdf" target="_blank"><button>Annual Report 2016 - 2017</button></a>
+    </div>
+    <div class="button" style="text-align: center;">
+        <a href="http://www.nyu.edu/content/dam/nyu/globalServices/documents/annualreport/annualReport2015-16.pdf" target="_blank"><button>Annual Report 2015 - 2016</button></a>
+    </div>
+
+
+
+    <script>
+
+    	//We're Growing: line gragh
+        var config1 = {
+            type: 'line',
+            data: {
+                labels: ["2006", "2007", "2008", "2009", "2010", "2011", "2012", "2013", "2014", "2015", "2016"],
+                datasets: [{
+                    label: "International Students",
+                    data: [
+                    <% for (var i = 0; i < 12; i++) { %>
+                    <%= yearsdata[i]%>,
+                    <% } %>
+                    ],
+                    backgroundColor: "#57068c",
+                    borderColor: "rgba(87,6,140,0.5)",
+                    fill: false,
+                    // borderDash: [5, 5],
+                    pointRadius: 5,
+                    pointHoverRadius: 10,
+                }]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    display: false,
+                },
+                hover: {
+                    mode: 'index'
+                },
+                scales: {
+                    xAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: false
+                        }
+                    }],
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: '# of students'
+                        }
+                    }]
+                },
+                title: {
+                    display: false,
+                    text: 'Chart.js Line Chart - Different point sizes'
+                }
+            }
+        };
+
+
+
+        //Doughnut chart
+        var config2={
+            type:"doughnut",
+            data:{
+                labels:["Graduate","Undergraduate","Post-graduation Training","Other"],
+                datasets:[{
+                    data:[
+                      <% for (var i = 0; i < 5; i++) { %>
+                      <%= academicdata[i]%>,
+                      <% } %>
+                    ],
+                    backgroundColor: [
+                        "#FF6384",
+                        "#36A2EB",
+                        "#FFCE56",
+                        "#57068c"
+                    ],
+                    hoverBackgroundColor: [
+                        "#FF6384",
+                        "#36A2EB",
+                        "#FFCE56",
+                        "#57068c"
+                    ]
+                }]
+            },
+            options:{
+            }
+        };
+
+        window.onload = function() {
+            var ctx1 = document.getElementById("lineChart").getContext("2d");
+            window.myLine = new Chart(ctx1, config1);
+            var ctx2 = document.getElementById("pieChart").getContext("2d");
+            window.myPie = new Chart(ctx2, config2);
+        };
+    </script>
+</body>
+
+</html>
