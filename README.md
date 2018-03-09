@@ -1,4 +1,5 @@
 Dynamic Web Development 2018
+<br>[→ class blog](http://www.alicehgsun.xyz/category/dynamic-web-development/)
 
 1. [Week 1: Webpage in VPS](http://hgs266.itp.io:8080/index.html)
 <br>Creating a simple webpage using VPS
