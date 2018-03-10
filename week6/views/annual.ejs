@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>International Student Data</title>
+  <style>
+    @font-face {
+      font-family: Gotham;
+      font-weight: 200;
+      src: url('font/Gotham-Book.otf');
+    }
+
+    @font-face {
+      font-family: Gotham;
+      font-weight: 100;
+      src: url('font/Gotham-Light.otf');
+    }
+
+    @font-face {
+      font-family: Gotham;
+      font-weight: medium;
+      src: url('font/Gotham-Medium.otf');
+    }
+
+    h3 {
+      font-family: Gotham;
+      font-weight: medium;
+    }
+
+    h4 {
+      font-family: Gotham;
+      font-weight: 200;
+    }
+
+    th {
+      font-family: Gotham;
+      font-weight: medium;
+      color: #bba3d0;
+      text-align: center;
+      padding: 4px 20px 0px 20px
+    }
+
+    td {
+      padding: 4px 20px 0px 20px
+    }
+
+    table {
+      margin: auto;
+    }
+
+    body {
+      color: #222;
+      font-family: Gotham;
+      font-weight: 100;
+      text-align: center;
+    }
+
+    input {
+      font-family: Gotham;
+    }
+
+    button {
+      font-family: Gotham;
+      font-weight: 200;
+      padding: 10px 40px 10px 40px;
+      color: #57068c;
+      font-size: 20px;
+      background-color: transparent;
+      border: 1px solid #57068c;
+      -webkit-transition-duration: 0.4s;
+      /* Safari */
+      transition-duration: 0.4s;
+      margin: 20px;
+
+    }
+
+    button:hover {
+      background-color: #57068c;
+      color: white;
+    }
+
+    button:focus {
+      outline: none;
+    }
+
+    form {
+      padding: 10px
+    }
+
+    #box{
+      position:relative;
+      width:400px;
+      margin:10px;
+      border: solid 1px #cccccc;
+    }
+
+    #bigbox{
+    width:400px;
+    display: inline-grid;}
+  </style>
+</head>
+
+<body>
+  <div id = 'bigbox'>
+  <div id = 'box'>
+    <form method="get" action="/processit">
+      <h3>Student Number</h3>
+      <h4>10 years: 2006 to 2016</h4>
+      <table>
+        <tr>
+          <th>years</th>
+          <th>students #</th>
+        </tr>
+        <tr>
+          <td>2006</td>
+          <td><input type="text" name="years0"></td>
+        </tr>
+        <tr>
+          <td>2007</td>
+          <td><input type="text" name="years1"></td>
+        </tr>
+        <tr>
+          <td>2008</td>
+          <td><input type="text" name="years2"></td>
+        </tr>
+        <tr>
+          <td>2009</td>
+          <td><input type="text" name="years3"></td>
+        </tr>
+        <tr>
+          <td>2010</td>
+          <td><input type="text" name="years4"></td>
+        </tr>
+        <tr>
+          <td>2011</td>
+          <td><input type="text" name="years5"></td>
+        </tr>
+        <tr>
+          <td>2012</td>
+          <td><input type="text" name="years6"></td>
+        </tr>
+        <tr>
+          <td>2013</td>
+          <td><input type="text" name="years7"></td>
+        </tr>
+        <tr>
+          <td>2014</td>
+          <td><input type="text" name="years8"></td>
+        </tr>
+        <tr>
+          <td>2015</td>
+          <td><input type="text" name="years9"></td>
+        </tr>
+        <tr>
+          <td>2016</td>
+          <td><input type="text" name="years10"></td>
+        </tr>
+      </table>
+      <button>submit</button>
+    </form>
+  </div>
+
+  <div id = 'box'>
+    <form action='/upload' method='POST' enctype="multipart/form-data">
+      <h3>Around the world</h3>
+      <h4>Global demographic data in csv format</h4>
+      <p><input type="file" name="file" id="file" /></p>
+      <button>submit</button>
+    </form>
+  </div>
+
+  <div id = 'box'>
+    <form method="get" action="/processit1">
+      <h3>Academic Level</h3>
+      <h4>Graduate, Undergraduate, Post grad training, Other</h4>
+      <table>
+        <tr>
+          <th>academic level</th>
+          <th>students #</th>
+        </tr>
+        <tr>
+          <td>Graduate</td>
+          <td><input type="text" name="grad"></td>
+        </tr>
+        <tr>
+          <td>Undergrad</td>
+          <td><input type="text" name="undergrad"></td>
+        </tr>
+        <tr>
+          <td>Post grad training</td>
+          <td><input type="text" name="postgrad"></td>
+        </tr>
+        <tr>
+          <td>Other</td>
+          <td><input type="text" name="other"></td>
+        </tr>
+      </table>
+      <button>submit</button>
+    </form>
+  </div>
+  </div>
+  <script>
+  </script>
+
+</body>
+
+</html>
